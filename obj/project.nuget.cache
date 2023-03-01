@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "F4ILyUUu3Z72lb+RJuFzzZKcbl/FKlIXapwuiTHowkWcwny1sFJpI4FjndK9ZRoI/aCKHUww1nbPUZRJkSY+lA==",
+  "dgSpecHash": "GU3V/2q8nhBbh1MzUHppPdzCvlH5gbpLrZLu4EJ5lxXIlHZJ5ozWcTFzeatBBX7nD+VEEEFy3DN4Ik0TV1q3jg==",
   "success": true,
-  "projectFilePath": "G:\\Other computers\\My Computer\\Desktop\\222\\SWE316\\HW1\\WinFormsApp1\\WinFormsApp1.csproj",
+  "projectFilePath": "C:\\Users\\wa\\The cooler desktop\\CV_viewer\\WinFormsApp1.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\moham\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+    "C:\\Users\\wa\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
   ],
   "logs": []
 }
