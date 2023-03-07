@@ -42,9 +42,20 @@ namespace WinFormsApp1.CV
             return "";
         }
 
+
+        public override string ToString()
+        {
+            return NameShorten();
+        }
         public string NameShorten()
         {
             return _name.FullShorten();
+        }
+        public int Age()
+        {
+            if (_dateOfBirth != null)
+                return DateTime.Now.Year - DateOfBirth.Year;
+            return 0;
         }
         public string Name
         {

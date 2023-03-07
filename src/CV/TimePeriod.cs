@@ -27,6 +27,15 @@ namespace WinFormsApp1.CV
             get { return _endDate ?? throw new Exception("End date is not stored"); }
             set { _endDate = value; }
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(_startDate?.ToString("yyyy MMM") ?? "Unknown");
+            sb.Append(" - ");
+            sb.Append(_endDate?.ToString("yyyy MMM") ?? "Present");
+            return sb.ToString();
+        }
         public bool IsCurrent()
         {
             if (_endDate == null)

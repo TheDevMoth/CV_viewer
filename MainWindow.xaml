@@ -1,0 +1,171 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="713" Width="1280">
+    <Window.Resources>
+        <Thickness x:Key="InfoItemMargin">10,10,25,10</Thickness>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="1,0.464" StartPoint="0.225,0.464">
+                <GradientStop Color="#FF7CBFFD"/>
+                <GradientStop Color="#FFC6E2FC" Offset="0.088"/>
+                <GradientStop Color="#FFE4F2FF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Viewbox/>
+        <DockPanel>
+            <StackPanel Margin="20,10,10,10">
+                <TextBlock Height="35" TextWrapping="Wrap" Text="Candidates" Width="168" FontSize="24" FontFamily="Global Sans Serif" FontWeight="Bold" Foreground="#FF233648" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ListBox x:Name="CandidateListBox" d:ItemsSource="{d:SampleData ItemCount=5}" BorderBrush="#FF233648" BorderThickness="3,3,3,3" Background="#FFC6E2FC" FontSize="20" Foreground="#FF233648" Loaded="CandidateListBox_Loaded" SelectionChanged="CandidateListBox_SelectionChanged" ClipToBounds="True" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="592" Width="267"/>
+            </StackPanel>
+
+            <GridSplitter Background="#00F0F0F0" Foreground="#00000000" Width="56"/>
+            <StackPanel x:Name="CandidateInfoSide" Margin="10,10,10,0">
+                <TextBlock x:Name="CandidateInfoTitle" Height="35" TextWrapping="Wrap" Width="261" FontSize="24" FontFamily="Global Sans Serif" FontWeight="Bold" Foreground="#FF233648" TextAlignment="Center" Text="Candidate Information" HorizontalAlignment="Left"/>
+                <ScrollViewer x:Name="CandidateInfoScroller" Margin="0,0,0,20" Height="635" UseLayoutRounding="True" >
+                    <StackPanel>
+                        <WrapPanel x:Name="CandidateInFoPanel" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left">
+                            <StackPanel x:Name="NamePanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top" Margin="10,10,25,10">
+                                <TextBlock x:Name="NameLabel" Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" Text="Name" TextWrapping="Wrap" FontSize="20"/>
+                                <Border Width="229" Height="27" UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                                    <TextBlock x:Name="NameTB" TextWrapping="Wrap" Text="TextBlock" Margin="5,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="212" FontSize="16"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="AgePanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top" Margin="10,10,25,10">
+                                <TextBlock x:Name="AgeLabel" Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" Text="Age" TextWrapping="Wrap" FontSize="20"/>
+                                <Border Width="229" Height="27" UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                                    <TextBlock x:Name="AgeTB" TextWrapping="Wrap" Text="TextBlock" Margin="5,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="212" FontSize="16"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="LocationPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Center" Margin="{DynamicResource InfoItemMargin}">
+                                <TextBlock x:Name="LocationLabel" Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" TextWrapping="Wrap" FontSize="20"><Run Text="Location"/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" Width="212" Height="78" >
+                                        <TextBlock x:Name="LocTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="WebsitesPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top" Margin="{DynamicResource InfoItemMargin}">
+                                <TextBlock x:Name="WebsiteLabel" Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" TextWrapping="Wrap" FontSize="20"><Run Text="Websites"/><LineBreak/><Run/></TextBlock>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" VerticalAlignment="Top" Width="212" Height="78" >
+                                        <TextBlock x:Name="WebsiteTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="EmailsPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top" Margin="10,10,25,10">
+                                <TextBlock x:Name="EmailLabel" Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" Text="Emails" TextWrapping="Wrap" FontSize="20"/>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" VerticalAlignment="Top" Width="212" Height="78" >
+                                        <TextBlock x:Name="EmailTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="PhonesPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top" Margin="{DynamicResource InfoItemMargin}">
+                                <TextBlock x:Name="PhoneLabel" Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" Text="Phones" TextWrapping="Wrap" FontSize="20"/>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" VerticalAlignment="Top" Width="212" Height="78" >
+                                        <TextBlock x:Name="PhoneTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                        </WrapPanel>
+                        <Ellipse Height="8" Margin="0,20,0,20">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="#FF4075A5" Offset="0.199"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <WrapPanel x:Name="CVPanel" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" UseLayoutRounding="False" HorizontalAlignment="Left">
+                            <StackPanel x:Name="ProfessionPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top" Margin="10,10,25,10">
+                                <TextBlock Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" Text="Profession" TextWrapping="Wrap" FontSize="20"/>
+                                <Border Width="229" Height="27" UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                                    <TextBlock x:Name="ProfessionTB" TextWrapping="Wrap" Text="TextBlock" Margin="5,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="212" FontSize="16"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="YoEPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top" Margin="10,10,25,10">
+                                <TextBlock Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" Text="Years of Experience" TextWrapping="Wrap" FontSize="20"/>
+                                <Border Width="229" Height="27" UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                                    <TextBlock x:Name="YoETB" TextWrapping="Wrap" Text="TextBlock" Margin="5,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="212" FontSize="16"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="WorkPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Center" Margin="{DynamicResource InfoItemMargin}">
+                                <TextBlock Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" TextWrapping="Wrap" FontSize="20" Text="Work Experiences"/>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" VerticalAlignment="Top" Width="212" Height="78" >
+                                        <TextBlock x:Name="WorkTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="EducationPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Center" Margin="{DynamicResource InfoItemMargin}">
+                                <TextBlock Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" TextWrapping="Wrap" FontSize="20" Text="Education"/>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" VerticalAlignment="Top" Width="212" Height="78" >
+                                        <TextBlock x:Name="EduTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="SkillsPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Center" Margin="{DynamicResource InfoItemMargin}">
+                                <TextBlock Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" TextWrapping="Wrap" FontSize="20" Text="Skills"/>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" VerticalAlignment="Top" Width="212" Height="78" >
+                                        <TextBlock x:Name="SkillsTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="ObjectivePanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Center" Margin="{DynamicResource InfoItemMargin}">
+                                <TextBlock Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" TextWrapping="Wrap" FontSize="20" Text="Objective"/>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" VerticalAlignment="Top" Width="212" Height="78" >
+                                        <TextBlock x:Name="ObjectiveTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="SummeryPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Center" Margin="{DynamicResource InfoItemMargin}">
+                                <TextBlock Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" TextWrapping="Wrap" FontSize="20"><Run Text="Summery"/><LineBreak/><Run/></TextBlock>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" VerticalAlignment="Top" Width="212" Height="78" >
+                                        <TextBlock x:Name="SummeryTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="LanguagesPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top" Margin="10,10,25,10">
+                                <TextBlock Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" Text="Languages" TextWrapping="Wrap" FontSize="20"/>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" VerticalAlignment="Top" Width="212" Height="78" >
+                                        <TextBlock x:Name="LangTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="CertificationsPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top" Margin="{DynamicResource InfoItemMargin}">
+                                <TextBlock Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" TextWrapping="Wrap" FontSize="20"><Run Text="Certifications"/><LineBreak/><Run/></TextBlock>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" VerticalAlignment="Top" Width="212" Height="78" >
+                                        <TextBlock x:Name="CertTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel x:Name="PublicationsPanel" HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top" Margin="{DynamicResource InfoItemMargin}">
+                                <TextBlock Height="26" Width="229" FontFamily="Global Sans Serif" Foreground="#FF233648" TextWrapping="Wrap" FontSize="20" Text="Publications"/>
+                                <Border UseLayoutRounding="False" CornerRadius="10,10,10,10" Background="#FFF1F8FF" BorderBrush="#FF233648" BorderThickness="2,2,2,2" >
+                                    <ScrollViewer HorizontalAlignment="Left" Margin="5,2,5,2" VerticalAlignment="Top" Width="212" Height="78" >
+                                        <TextBlock x:Name="PubTB" TextWrapping="Wrap" FontSize="14" Text=""/>
+                                    </ScrollViewer>
+                                </Border>
+                            </StackPanel>
+                        </WrapPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+
+        </DockPanel>
+
+    </Grid>
+</Window>

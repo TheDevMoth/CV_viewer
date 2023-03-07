@@ -39,5 +39,56 @@ namespace WinFormsApp1.CV
             _educations = educations;
             _workExperiences = workExperiences;
         }
+
+        public string Objective
+        {
+            get { return _objective; }
+        }
+        public string Summery
+        {
+            get { return _summery; }
+        }
+        public string Profession
+        {
+            get { return _profession; }
+        }
+        public int YearsOfExperience
+        {
+            get { return _yearsOfExperience; }
+        }
+        public string[] Languages
+        {
+            get { return _languages; }
+        }
+        public string[] LanguageCodes
+        {
+            get { return _languageCodes; }
+        }
+        public string[] Certifications
+        {
+            get { return _certifications; }
+        }
+        public string[] Publications
+        {
+            get { return _publications; }
+        }
+        public string[] Referees
+        {
+            get { return _referees; }
+        }
+        public Skill[] Skills
+        {
+            get { return _skills; }
+        }
+        public Education[] Educations
+        {
+            get { return _educations; }
+        }
+        public WorkExperience[] WorkExperiences
+        {
+            get { return _workExperiences; }
+        }
+        
+
     }
 }

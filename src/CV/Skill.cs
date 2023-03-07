@@ -27,6 +27,27 @@ namespace WinFormsApp1.CV
             _monthsOfExperience = monthsOfExperience;
         }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Name);
+            sb.Append(" (");
+            sb.Append(Type);
+            sb.Append(")");
+            if (_lastUsed != null)
+            {
+                sb.Append(", last used ");
+                sb.Append(LastUsed.ToString("yyyy-MM"));
+            }
+            if (_monthsOfExperience != null)
+            {
+                sb.Append(", with ");
+                sb.Append(MonthsOfExperience);
+                sb.Append(" months of experience");
+            }
+            return sb.ToString();
+        }
+
         public int Id
         {
             get { return _id; }

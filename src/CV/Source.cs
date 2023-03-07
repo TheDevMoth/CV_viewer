@@ -19,6 +19,17 @@ namespace WinFormsApp1.CV
             _section = section;
         }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Section);
+            if (_workExperienceId != null && _position != null)
+            {
+                sb.Append(", from position as ");
+                sb.Append(Position);
+            }
+            return sb.ToString();
+        }
         public int WorkExperienceId
         {
             get { return _workExperienceId ?? throw new Exception("Work experience is not stored"); }

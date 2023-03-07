@@ -13,11 +13,11 @@ namespace WinFormsApp1.CV
         private string _accreditation;
         private string? _gradeMetric;
         private string? _grade;
-        private TimePeriod _period;
+        private TimePeriod? _period;
         private string? _educationLevel;
         private Location? _loc;
 
-        public Education(int id, string organization, string accreditation, TimePeriod period,
+        public Education(int id, string organization, string accreditation, TimePeriod? period = null,
         string? gradeMetric = null, string? grade = null, Location? loc = null,  string? educationLevel = null)
         {
             _id = id;
@@ -30,6 +30,24 @@ namespace WinFormsApp1.CV
             _loc = loc;
         }
         
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Accreditation);
+            sb.Append(", at ");
+            sb.Append(Organization);
+            sb.Append(". ");
+            if (_period != null)
+                sb.Append(Period.ToString());
+            if (_gradeMetric != null && _grade != null)
+            {
+                sb.Append("\n");
+                sb.Append(GradeMetric);
+                sb.Append(": ");
+                sb.Append(Grade);
+            }
+            return sb.ToString();
+        }
 
         public int Id
         {
@@ -63,7 +81,7 @@ namespace WinFormsApp1.CV
         }
         public TimePeriod Period
         {
-            get { return _period; }
+            get { return _period ?? throw new Exception("Education level is not stored"); }
             set { _period = value; }
         }
         public Location Loc

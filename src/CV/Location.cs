@@ -29,6 +29,10 @@ namespace WinFormsApp1.CV
             _postalCode = postalCode;
         }
 
+        public override string ToString()
+        {
+            return Formatted();
+        }
         public string Formatted()
         {
             StringBuilder sb = new StringBuilder();

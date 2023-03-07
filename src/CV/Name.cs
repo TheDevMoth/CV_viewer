@@ -25,7 +25,6 @@ namespace WinFormsApp1.CV
             if (title == "")
                 _title = null;
         }
-
         public Name(string FullName)
         {
             string[] names = FullName.Split(' ');
@@ -51,6 +50,12 @@ namespace WinFormsApp1.CV
             {
                 throw new ArgumentException("Invalid name, name must be in the format of 'Title First Middle Last' or 'First Middle Last' or 'First Last'");
             }
+        }
+
+
+        public override string ToString()
+        {
+            return FullShorten();
         }
 
         public string Full()

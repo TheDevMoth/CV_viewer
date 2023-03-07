@@ -1,54 +1,51 @@
 using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Linq;
 using WinFormsApp1.CV;
 
-namespace WinFormsApp1
+namespace WinFormsApp1.Json
 {
     internal static class JsonReader
     {
-        public static Applicant[] GetApplicants(string[] files)
+        public static Applicant GetApplicant(string file)
         {
-            Applicant[] applicants = new Applicant[files.Length];
-            for (int i = 0; i < files.Length; i++)
-            {
-                dynamic? data = ReadJson(files[i]) ?? throw new FileNotFoundException(files[i]);
+            dynamic? data = ReadJson(file) ?? throw new FileNotFoundException(file);
 
-                // Create the CV object
-                string objective = data.Objective;
-                string summary = data.Summary;
-                string profession = data.Profession;
-                int yearsOfExperience = data.TotalYearsExperience;
-                string[] languages = data.Languages.ToObject<string[]>();
-                string[] langCodes = data.LanguageCodes.ToObject<string[]>();
-                string[] certifications = data.Certifications.ToObject<string[]>();
-                string[] publications = data.Publications.ToObject<string[]>();
-                string[] referees = data.Referees.ToObject<string[]>();
-                Skill[] skills = ExtractSkills(data.Skills);
-                Education[] education = ExtractEducation(data.Education);
-                WorkExperience[] workExperience = ExtractWorkExperience(data.WorkExperience);
+            // Create the CV object
+            string objective = data.Objective;
+            string summary = data.Summary;
+            string profession = data.Profession;
+            int yearsOfExperience = data.TotalYearsExperience;
+            string[] languages = data.Languages.ToObject<string[]>();
+            string[] langCodes = data.LanguageCodes.ToObject<string[]>();
+            string[] certifications = data.Certifications.ToObject<string[]>();
+            string[] publications = data.Publications.ToObject<string[]>();
+            string[] referees = data.Referees.ToObject<string[]>();
+            Skill[] skills = ExtractSkills(data.Skills);
+            Education[] education = ExtractEducation(data.Education);
+            WorkExperience[] workExperience = ExtractWorkExperience(data.WorkExperience);
                 
-                CV.CV cv = new (objective, summary, profession, yearsOfExperience, languages, langCodes, 
-                    certifications, publications, referees, skills, education, workExperience);
+            CV.CV cv = new (objective, summary, profession, yearsOfExperience, languages, langCodes, 
+                certifications, publications, referees, skills, education, workExperience);
 
-                // Create applicant object
-                Name name = new ((string) data.Name.First, (string?) data.Name.Middle, (string) data.Name.Last, (string?) data.Name.Title);
-                string[] phones = data.PhoneNumbers.ToObject<string[]>();
-                string[] emails = data.Emails.ToObject<string[]>();
-                string[] websites = data.Websites.ToObject<string[]>();
-                Location? location = ExtractLocation(data.Location);
-                DateTime? dateOfBirth = ExtractDate(data.DateOfBirth);
-                string? headshot = data.Headshot;
+            // Create applicant object
+            Name name = new ((string) data.Name.First, (string?) data.Name.Middle, (string) data.Name.Last, (string?) data.Name.Title);
+            string[] phones = data.PhoneNumbers.ToObject<string[]>();
+            string[] emails = data.Emails.ToObject<string[]>();
+            string[] websites = data.Websites.ToObject<string[]>();
+            Location? location = ExtractLocation(data.Location);
+            DateTime? dateOfBirth = ExtractDate(data.DateOfBirth);
+            string? headshot = data.Headshot;
 
-                // add linkedin to websites
-                string? linkedin = data.LinkedIn;
-                if(linkedin != null && !websites.Contains(linkedin))
-                    websites = websites.Append(linkedin).ToArray();
+            // add linkedin to websites
+            string? linkedin = data.LinkedIn;
+            if(linkedin != null && !websites.Contains(linkedin))
+                websites = websites.Append(linkedin).ToArray();
 
-                Applicant applicant = new (name, cv, phones, emails, websites, location, dateOfBirth, headshot);
+            Applicant applicant = new (name, cv, phones, emails, websites, location, dateOfBirth, headshot);
 
-                applicants[i] = applicant;
-            }
-
-            return applicants;
+            return applicant;
         }
 
         public static dynamic? ReadJson(string file)

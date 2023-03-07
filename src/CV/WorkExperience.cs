@@ -36,6 +36,18 @@ namespace WinFormsApp1.CV
             _classification = classification;
         }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Title);
+            sb.Append(" at ");
+            sb.Append(Organization);
+            sb.Append(" (");
+            sb.Append(Period);
+            sb.Append(")");
+            return sb.ToString();
+        }
+
         public int Id
         {
             get { return _id; }
